@@ -5,6 +5,8 @@ COPY package*.json $WORKDIR
 RUN npm install --production --no-cache
 
 FROM node:12-alpine
+RUN apk update && apk add python3 make g++ build-base && rm -rf /var/cache/apk/*
+#RUN npm install --save trend_app_protect
 ENV USER node
 ENV WORKDIR /home/$USER/app
 WORKDIR $WORKDIR
